@@ -1,262 +1,352 @@
 :root {
-            /* Color Palette - 5 Core Colors */
-            --color-primary: #07F54B;     /* Lime Green - Main Brand Color */
-            --color-secondary: #FFF810;   /* Neon Yellow - Complementary Color */
-            --color-accent: #E32D83;      /* Magenta - Highlight / */
-            --color-neutral: #0F2E08;     /* Greenish black - Dark Text */
-            --color-highlight: #48AC27;   /* Camo Green - Accent / Attention Color */
-            
-            /* Derived Colors for Flexibility */
-            --color-background: color-mix(in srgb, var(--color-neutral) 10%, black);
-            --color-text-dark: var(--color-neutral);
-            --color-text-light: white;
+/* Color Palette - 5 Core Colors */
+--color-primary: #07F54B;     /* Lime Green - Main Brand Color */
+--color-secondary: #FFF810;   /* Neon Yellow - Complementary Color */
+--color-accent: #E32D83;      /* Magenta - Highlight / */
+--color-neutral: #0F2E08;     /* Greenish black - Dark Text */
+--color-highlight: #48AC27;   /* Camo Green - Accent / Attention Color */
 
-            /* Typography */
-            --font-primary: 'Impact', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-secondary: 'Bell MT';
+        /* Derived Colors for Flexibility */
+        --color-background: color-mix(in srgb, var(--color-neutral) 10%, black);
+        --color-text-dark: var(--color-neutral);
+        --color-text-light: white;
 
-            /* Spacing System */
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 1.5rem;
-            --spacing-lg: 2rem;
-            --spacing-xl: 2.5rem;
+        /* Typography */
+        --font-primary: 'Impact', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-secondary: 'Bell MT';
 
-            /* Border Radius */
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-        }
+        /* Spacing System */
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 2.5rem;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Border Radius */
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+    }
 
-        body {
-            font-family: var(--font-primary);
-            line-height: 1.6;
-            background-color: var(--color-background);
-            color: var(--color-highlight);
-            padding: var(--spacing-xl);
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        .centering{
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    html {
+        scroll-behavior: smooth;
+    }
 
-        /* Typography Styles */
+@media (max-width: 800px){
 
-        .big{
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        }
+body{
+padding:var(--spacing-md);
+}
 
-        .jane{  
-        width: 1100px;
-        height: auto;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        }
+.jane{
+margin-top:50px;
+}
 
-        .artwork{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: var(--spacing-lg);
-        max-width: 1400px;
-        margin: var(--spacing-xl) auto;
-        padding: var(--spacing-lg);
-        }
+.artwork{
+grid-template-columns:1fr;
+}
 
-        .artwork img{
-        width: 100%;
-        height: auto;
-        cursor: pointer;
+.body-text{
+font-size:1.2rem;
+}
+}
 
-        }
+    body {
+        font-family: var(--font-primary);
+        line-height: 1.6;
+        background-color: var(--color-background);
+        color: var(--color-highlight);
+        padding: var(--spacing-xl);
+    }
 
-        .artwork img:hover{
-        transform: scale(1.05);
-        box-shadow: 0px 0px 20px var(--color-primary);
-        }
+    .centering{
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-        .artwork img:active{
-        transform: scale(1.10);
-        border-color: var(--color-accent);
-        box-shadow: 0px 0px 25px var(--color-primary),0px 0px 50px var(--color-accent);
-        }
+    /* Typography Styles */
 
-        .bigtextcontainer{
-    position: relative; /* Establishes a positioning context for absolute children */
-    display: inline-block;
+    .big{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    }
+
+.jane {
+width: 100%;
+max-width: 800px;
+height: auto;
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: 100px;
+}
+
+    .artwork{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1200px;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-lg);
+    }
+
+    .artwork img{
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .artwork img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 12px var(--color-primary);
+    }
+    .artwork img:active {
+    transform: scale(1.05);
+    box-shadow: 0 0 16px var(--color-accent);
+    }
+
+    .bigtextcontainer{
+position: relative; 
+display: inline-block;
+
+
 }
 
 .textbacking{
-    width: 100%;
-    height: auto;
-    display: block;
-    z-index: 0; /* Places the image behind the text */
-    filter: drop-shadow(0 0 0.20rem var(--color-primary));
-    filter: drop-shadow(0 0 0.40rem var(--color-highlight));
-    filter: drop-shadow(0 0 0.50rem var(--color-primary));
+width: 100%;
+height: auto;
+display: block;
+z-index: 0;
+filter: drop-shadow(0 0 4px var(--color-primary)) drop-shadow(0 0 8px var(--color-highlight));
 }
 
 .big h1{
-    position: absolute;
-    top: 50%; /* Adjust position as needed */
-    left: 50%; /* Adjust position as needed */
-    transform: translate(-50%, -50%); /* Centers the text */
-    z-index: 1; /* Ensures text is on top */
-    color: var(--color-primary);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1;
+color: var(--color-primary);
 
-    font-size: 8.5rem;
-    text-shadow: 4px 4px 8px var(--color-accent);
+
+font-size: 8.5rem;
+text-shadow: 4px 4px 8px var(--color-secondary);
+
+
+
+}
+
+.aboutcontainer{
+text-align: center;
+margin-top: 100px;
+
+}
+
+.janeframecontainer{
+position: relative;
+display: inline-block;
+}
+
+.gunstoplayer{
+position: absolute;
+bottom: 35%;
+left: 50%;
+transform: translate(-50%, 30%);
+width: 150%;
+height: auto;
+z-index: 2;
+pointer-events: none;
+}
+
+.bodyembcontainer{
+position: relative;
+display: inline-block;
+}
+
+.staremb{
+position: absolute;
+top: 35%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 180%;
+height: auto;
+z-index: 0;
+pointer-events: none;
+}
+
+.fireembcontainer{
+position: relative;
+text-align: center;
+display: block;
+}
+
+.fireemb{
+position: absolute;
+top: 168%;
+left: 50%;
+transform: translate(-50%, -40%);
+width: 180%;
+height: 600%;
+z-index: 0;
+pointer-events: none;
+}
+
+.fireembcontainer h2{
+position: relative;
+z-index: 1;
+font-size: 7.2rem;
+
 }
 
 
+    h1 {
+        font-size: clamp(3rem, 7vw, 10rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        color: var(--color-primary);
+        text-align: center;
+    }
+
+    h2 {
+        font-size:clamp(2.5rem,6vw,7.2rem);
+        font-weight: 600;
+        margin-bottom: var(--spacing-md);
+        margin-top: var(--spacing-md);
+        color: var(--color-secondary);
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 5.6rem;
+        font-weight: 500;
+        margin-bottom: var(--spacing-sm);
+        color: var(--color-accent);
+    }
+
+    pre{
+        color: var(--color-primary);
+    }
+
+    nav{
+    position:sticky;
+    top:0px;
+    z-index:1000;
+    font-size: 1rem;
+    text-align: left;
+    background-color: var(--color-background);
+    padding: var(--spacing-sm);
+    }
+
+    footer{
+    font-size: 1rem;
+    text-align: left;
+    background-color: var(--color-background);
+    padding: var(--spacing-sm);    
+    }
 
 
-        h1 {
-            font-size: clamp(4rem, 10vw, 15rem);   
-            font-weight: 700;
-            margin-bottom: var(--spacing-md);
-            color: var(--color-primary);
-            text-align: center;
-        }
 
-        h2 {
-            font-size: 7.2rem;
-            font-weight: 600;
-            margin-bottom: var(--spacing-md);
-            color: var(--color-secondary);
-            text-align: center;
-        }
+    a{
+        color: var(--color-primary);
+    }
 
-        h3 {
-            font-size: 5.6rem;
-            font-weight: 500;
-            margin-bottom: var(--spacing-sm);
-            color: var(--color-accent);
-        }
+    section{
+        font-family: var(--font-secondary);
+    }
 
-        pre{
-            color: var(--color-primary);
-        }
+    .body-text {
+        font-family: var(--font-secondary);
+        font-size: 1.75rem;
+        margin-bottom: var(--spacing-md);
+        color: var(--color-highlight);
 
-        nav{
-            position:sticky;
-            top:0px;
-            font-size: 1rem;
-            font-family: var(--font-secondary);
-            text-align: left;
-            background-color: var(--color-background);
-            padding: var(--spacing-sm);
-        }
+        position: relative;
+        z-index: 1;
+    }
 
-.about{
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 3rem;
-    align-items: center;
-        margin-top: 4rem;
-}
+    .small-text {
+        font-family: var(--font-secondary);
+        font-size: 1rem;
+        color: var(--color-highlight);
+            }
 
+    /* Color Palette Section */
+    .color-palette {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+    }
 
-        a{
-            color: var(--color-primary);
-        }
+    .color-swatch {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
-        section{
-            font-family: var(--font-secondary);
-        }
+    /* Component Styles */
+    .button {
+        display: inline-block;
+        padding: var(--spacing-sm) var(--spacing-md);
+        background-color: var(--color-primary);
+        color: var(--color-text-dark);
+        text-decoration: none;
+        border-radius: var(--radius-sm);
+        transition: background-color 0.3s ease, transform 0.2s;
+        border: 2px solid transparent;
+    }
 
-        .body-text {
-            font-family: var(--font-secondary);
-            font-size: 1.75rem;
-            margin-bottom: var(--spacing-md);
-            color: var(--color-highlight);
+    .button:hover {
+        background-color: color-mix(in srgb, var(--color-primary) 80%, black);
+        border-color: var(--color-secondary);
+        transform: scale(1.05);
+    }
 
-        }
+    .button:active {
+        transform: scale(0.95);
+        background-color: var(--color-secondary);
+    }
 
-        .small-text {
-            font-family: var(--font-secondary);
-            font-size: 1.50rem;
-            color: var(--color-highlight);
-                }
+    .link {
+        color: var(--color-secondary);
+        font-family: var(--font-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease, text-decoration-color 0.3s;
+    }
 
-        /* Color Palette Section */
-        .color-palette {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-xl);
-        }
+    .link:hover {
+        color: var(--color-secondary);
+        text-decoration: underline;
+        text-decoration-color: var(--color-highlight);
+    }
 
-        .color-swatch {
-            padding: var(--spacing-md);
-            border-radius: var(--radius-md);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+    .link:visited {
+        color: var(--color-accent);
+    }
 
-        /* Component Styles */
-        .button {
-            display: inline-block;
-            padding: var(--spacing-sm) var(--spacing-md);
-            background-color: var(--color-primary);
-            color: var(--color-text-dark);
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-            transition: background-color 0.3s ease, transform 0.2s;
-            border: 2px solid transparent;
-        }
+    /* Spacing Demonstration */
+    .spacing-demo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
 
-        .button:hover {
-            background-color: color-mix(in srgb, var(--color-primary) 80%, black);
-            border-color: var(--color-secondary);
-            transform: scale(1.05);
-        }
-
-        .button:active {
-            transform: scale(0.95);
-            background-color: var(--color-secondary);
-        }
-
-        .link {
-            color: var(--color-secondary);
-            font-family: var(--font-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease, text-decoration-color 0.3s;
-        }
-
-        .link:hover {
-            color: var(--color-secondary);
-            text-decoration: underline;
-            text-decoration-color: var(--color-highlight);
-        }
-
-        .link:visited {
-            color: var(--color-accent);
-        }
-
-        /* Spacing Demonstration */
-        .spacing-demo {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .spacing-block {
-            background-color: var(--color-primary);
-            height: 50px;
-        }
+    .spacing-block {
+        background-color: var(--color-primary);
+        height: 50px;
+    }
