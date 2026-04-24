@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
+  text-align: center;
+}
+
+.header, .footer {
+  padding: 20px;
+  background: #1a1a1a;
+}
+
+.game {
+  padding: 40px 20px;
+}
+
+.volumeContainer {
+  width: 320px;
+  height: 30px;
+  border: 2px solid white;
+  margin: 20px auto;
+}
+
+.volumeBar {
+  height: 100%;
+  width: 0%;
+  background: limegreen;
+  transition: width 0.25s;
+}
+
+.qteBox {
+  font-size: 32px;
+  letter-spacing: 6px;
+  margin-top: 10px;
+}
+
+.timer {
+  margin-top: 10px;
+  color: orange;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  position: absolute;
+  left: -9999px;
+}
