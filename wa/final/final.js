@@ -1,3 +1,5 @@
+//type box that you can backspace
+//song picker/loader
 
 
 let volume = 0;
