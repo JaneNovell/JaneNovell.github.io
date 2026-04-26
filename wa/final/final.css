@@ -1,52 +1,45 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
+  font-family: "Bell MT";
+  background: #131a11;
   color: white;
   text-align: center;
 }
 
 .header, .footer {
   padding: 20px;
-  background: #1a1a1a;
+  background: #01ee19;
 }
 
-.game {
-  padding: 40px 20px;
-}
 
 .volumeContainer {
   width: 320px;
   height: 30px;
-  border: 2px solid white;
+  border: 2px solid rgb(0, 255, 72);
   margin: 20px auto;
 }
 
 .volumeBar {
   height: 100%;
   width: 0%;
-  background: limegreen;
+  background: rgb(255, 0, 0);
   transition: width 0.25s;
 }
 
 .qteBox {
-  font-size: 32px;
-  letter-spacing: 6px;
+  font-family: "Bell MT";
   margin-top: 10px;
 }
 
 .timer {
+  font-family: "Bell MT";
   margin-top: 10px;
-  color: orange;
+  color: rgb(255, 0, 0);
 }
 
 button {
+  color: #131a11;
   margin: 10px;
-  padding: 10px 20px;
   cursor: pointer;
 }
 
-.hidden {
-  position: absolute;
-  left: -9999px;
-}

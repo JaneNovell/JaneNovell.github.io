@@ -46,7 +46,7 @@ function updateUI() {
 
 function startGame() {
   audio.play();
-  updateUI(); // important
+  updateUI();
   startQTE();
 }
 
@@ -67,12 +67,10 @@ function startQTE() {
 
   timerInterval = setInterval(() => {
     timeLeft -= 0.1;
-
     document.getElementById("timer").textContent =
       `Time: ${timeLeft.toFixed(1)}s`;
 
-    if (timeLeft <= 0) failQTE();
-  }, 100);
+    if (timeLeft <= 0) failQTE(); }, 100);
 }
 
 
@@ -99,7 +97,7 @@ function failQTE() {
 
   level = Math.max(1, level - 1);
 
-  document.getElementById("qteDisplay").textContent = "✖";
+  document.getElementById("qteDisplay").textContent = "X";
 
   setTimeout(startQTE, 700);
 }
