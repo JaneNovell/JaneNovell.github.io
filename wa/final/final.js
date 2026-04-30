@@ -1,7 +1,3 @@
-//type box that you can backspace
-//song picker/loader
-
-
 let volume = 0;
 let level = 1;
 
@@ -13,19 +9,61 @@ let timeLeft = 5;
 let timerInterval = null;
 let listening = false;
 let inputBuffer = "";
-
+let qteTimeout = null;
+let gain = 1;
 
 const audio = document.getElementById("audio");
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
+const resetBtn = document.getElementById("resetBtn");
+const songPicker = document.getElementById("songPicker");
+const typeInput = document.getElementById("typeInput");
 
 document.addEventListener("DOMContentLoaded", () => {
+  const volumeSlider = document.getElementById("volumeSlider");
 
   startBtn.addEventListener("click", startGame);
   stopBtn.addEventListener("click", stopGame);
+  resetBtn.addEventListener("click", resetGame);
 
+  volumeSlider.addEventListener("input", () => {
+    gain = parseInt(volumeSlider.value);
+    document.getElementById("gainText").textContent = gain;
+  });
+
+  songPicker.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const url = URL.createObjectURL(file);
+
+    audio.pause();
+    audio.src = url;
+    audio.load();
+  });
 });
 
+function resetGame() {
+  listening = false;
+  clearInterval(timerInterval);
+  clearTimeout(qteTimeout);
+
+  audio.pause();
+  audio.currentTime = 0;
+
+  volume = 0;
+  level = 1;
+  comboLength = 3;
+  maxTime = 5;
+  currentCombo = "";
+  inputBuffer = "";
+
+  typeInput.value = "";
+  document.getElementById("qteDisplay").textContent = "Press Start";
+  document.getElementById("timer").textContent = "";
+
+  updateUI();
+}
 
 const keys = "ASDFJKLQWERTYUIOPZXCVBNM";
 
@@ -45,14 +83,26 @@ function updateUI() {
   audio.volume = volume / 100;
 }
 
-
 function startGame() {
-  audio.play();
+  clearInterval(timerInterval);
+  clearTimeout(qteTimeout);
+
+  if (!audio.src) {
+    alert("Please select a song first");
+    return;
+  }
+
+  audio.play().catch(() => {});
+  typeInput.focus();
+
   updateUI();
   startQTE();
 }
 
 function startQTE() {
+  typeInput.focus();
+  typeInput.value = "";
+
   if (volume >= 100) {
     document.getElementById("qteDisplay").textContent = "MAX VOLUME!";
     return;
@@ -72,16 +122,16 @@ function startQTE() {
     document.getElementById("timer").textContent =
       `Time: ${timeLeft.toFixed(1)}s`;
 
-    if (timeLeft <= 0) failQTE(); }, 100);
+    if (timeLeft <= 0) failQTE();
+  }, 100);
 }
-
 
 function successQTE() {
   clearInterval(timerInterval);
   listening = false;
 
   level++;
-  volume = Math.min(volume + 10, 100);
+  volume = Math.min(volume + gain, 100);
 
   comboLength = 3 + Math.floor(level / 2);
   maxTime = Math.max(1.5, 5 - level * 0.3);
@@ -90,10 +140,12 @@ function successQTE() {
 
   document.getElementById("qteDisplay").textContent = "✔";
 
-  setTimeout(startQTE, 700);
+  qteTimeout = setTimeout(startQTE, 700);
 }
 
 function failQTE() {
+  if (!listening) return;
+
   clearInterval(timerInterval);
   listening = false;
 
@@ -101,12 +153,13 @@ function failQTE() {
 
   document.getElementById("qteDisplay").textContent = "X";
 
-  setTimeout(startQTE, 700);
+  qteTimeout = setTimeout(startQTE, 700);
 }
 
 function stopGame() {
   listening = false;
   clearInterval(timerInterval);
+  clearTimeout(qteTimeout);
 
   audio.pause();
 
@@ -114,17 +167,21 @@ function stopGame() {
   document.getElementById("timer").textContent = "";
 }
 
-document.addEventListener("keydown", (e) => {
+typeInput.addEventListener("input", () => {
   if (!listening) return;
 
-  inputBuffer += e.key.toUpperCase();
+  let value = typeInput.value.toUpperCase().replace(/[^A-Z]/g, "");
 
-  if (inputBuffer.length > currentCombo.length) {
-    inputBuffer = inputBuffer.slice(-currentCombo.length);
+  if (value.length > currentCombo.length) {
+    value = value.slice(0, currentCombo.length);
   }
+
+  typeInput.value = value;
+  inputBuffer = value;
 
   if (inputBuffer === currentCombo) {
     inputBuffer = "";
+    typeInput.value = "";
     successQTE();
   }
 });

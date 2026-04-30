@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,9 @@
 <body>
     <header class="header">
   <h1>Quicktype Player</h1>
+
+<input type="file" id="songPicker" accept="audio/*">
+
 </header>
 
 <main>
@@ -19,30 +23,34 @@
     </div>
 
     <p>Volume: <span id="volumeText">0%</span></p>
-    <p>Level: <span id="levelText">1</span></p>
+    <p><span id="levelText">1</span></p>
   </section>
 
   <section class="qtePanel">
-
     <div class="qteBox" id="qteDisplay">Press Start</div>
     <div class="timer" id="timer"></div>
+    <input type="text" id="typeInput" placeholder="Type" autocomplete="off">
   </section>
 
   <section class="controls">
     <button id="startBtn">Start</button>
     <button id="stopBtn">Stop</button>
-  </section>
+    <button id="resetBtn">Reset</button>
 
+    <label>+<span id="gainText">1</span></label>
+    <input type="range" id="volumeSlider" min="0" max="10" step="1" value="0">
+
+  </section>
 </main>
 
 <footer class="footer"> 
 </footer>
 
-<audio id="audio" loop>
-  <source src="Mr Scruff- Kalimba (Ninja Tuna).mp3" type="audio/mpeg"> 
-</audio>
+<audio id="audio" loop></audio>
 
 <script src="final.js"></script>
 
 </body>
 </html>
+
+<!--"Mr Scruff- Kalimba (Ninja Tuna).mp3"-->
