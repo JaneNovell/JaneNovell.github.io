@@ -1,15 +1,14 @@
 [
     {
-        "date": "2026-08-15",
-        "title": "Chrysalis Presents",
-        "venue": "The Fox Theatre",
-        "time": "8:00 PM",
-        "flyer": "flyers/show1.jpg"
+        "date": "2026-08-21",
+        "title": "WIRED2GROOVE",
+        "time": "$15 10:00 PM to LATE",
+        "flyer": "WIRED2GROOVE.png"
     },
     {
         "date": "2026-08-22",
         "title": "Live at Chrysalis",
-        "venue": "Boulder Theater",
+        "venue": "Chrysalis",
         "time": "9:00 PM",
         "flyer": "flyers/show2.jpg"
     },

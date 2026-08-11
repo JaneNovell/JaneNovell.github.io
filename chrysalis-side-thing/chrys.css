@@ -353,9 +353,11 @@ font-size: 7.2rem;
     }
 
 
-    /*EVENTCALENDAR*/
+/* ==========================================
+   EVENT CALENDAR
+========================================== */
 
-    #event-calendar {
+#event-calendar {
     width: 100%;
     max-width: 1100px;
     margin: 50px auto;
@@ -363,37 +365,86 @@ font-size: 7.2rem;
 }
 
 
-/* Calendar Header */
+/* ==========================================
+   MONTH HEADER
+========================================== */
 
 .calendar-header {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto 25px auto;
+
     display: grid;
-    grid-template-columns: 80px 1fr 80px;
+
+    grid-template-columns:
+        90px
+        minmax(0, 1fr)
+        90px;
+
     align-items: center;
-    gap: 20px;
-    margin-bottom: 25px;
+
+    height: 110px;
 }
+
+
+/* ==========================================
+   MONTH NAME
+========================================== */
 
 .calendar-header h3 {
-    margin: 0;
+    width: 100%;
+    min-width: 0;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
     font-family: var(--font-primary);
-    font-size: clamp(2.5rem, 5vw, 5rem);
+
+    font-size:
+        clamp(2.5rem, 5vw, 5rem);
+
+    line-height: 1;
+
     color: var(--color-secondary);
+
     text-align: center;
+
+    white-space: nowrap;
 }
 
 
-/* Navigation Buttons */
+/* ==========================================
+   CALENDAR ARROWS
+========================================== */
 
 .calendar-button {
-    background: var(--color-primary);
-    color: var(--color-neutral);
+    width: 90px;
+    height: 70px;
+
+    min-width: 90px;
+    max-width: 90px;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        var(--color-primary);
+
+    color:
+        var(--color-neutral);
 
     border: none;
 
-    font-family: var(--font-primary);
-    font-size: 2rem;
+    font-family:
+        var(--font-primary);
 
-    padding: 10px 15px;
+    font-size: 2rem;
 
     cursor: pointer;
 
@@ -401,6 +452,7 @@ font-size: 7.2rem;
         transform 0.2s,
         box-shadow 0.2s;
 }
+
 
 .calendar-button:hover {
     transform: scale(1.1);
@@ -410,58 +462,86 @@ font-size: 7.2rem;
         0 0 20px var(--color-highlight);
 }
 
+
 .calendar-button:active {
     transform: scale(0.95);
 }
 
 
-/* Weekday Header */
+/* ==========================================
+   WEEKDAY HEADER
+========================================== */
 
 .calendar-weekdays {
     display: grid;
 
     grid-template-columns:
-        repeat(7, 1fr);
+        repeat(7, minmax(0, 1fr));
 
     gap: 5px;
 
     margin-bottom: 5px;
 }
 
+
 .calendar-weekdays div {
     padding: 12px;
 
     text-align: center;
 
-    font-family: var(--font-primary);
+    font-family:
+        var(--font-primary);
 
     font-size: 1.2rem;
 
-    color: var(--color-secondary);
+    color:
+        var(--color-secondary);
 
     border-bottom:
         2px solid var(--color-primary);
 }
 
 
-/* Calendar Grid */
+/* ==========================================
+   CALENDAR GRID
+========================================== */
+
+/*
+   IMPORTANT:
+   Every month gets exactly 6 rows.
+   Every row is exactly 150px tall.
+*/
 
 .calendar-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(7, 1fr);
+        repeat(7, minmax(0, 1fr));
+
+    grid-template-rows:
+        repeat(6, 150px);
+
+    grid-auto-rows: 150px;
 
     gap: 5px;
+
+    width: 100%;
 }
 
 
-/* Individual Day */
+/* ==========================================
+   CALENDAR DAYS
+========================================== */
 
 .calendar-day {
+    width: 100%;
+    height: 150px;
     min-height: 150px;
+    max-height: 150px;
 
     padding: 10px;
+
+    box-sizing: border-box;
 
     border:
         2px solid var(--color-highlight);
@@ -471,10 +551,20 @@ font-size: 7.2rem;
 
     position: relative;
 
+    /*
+       Prevent event content from
+       changing the calendar spacing.
+    */
+    overflow-y: auto;
+    overflow-x: hidden;
+
     transition:
         border-color 0.2s,
         box-shadow 0.2s;
+
+    scrollbar-width: thin;
 }
+
 
 .calendar-day:hover {
     border-color:
@@ -485,27 +575,35 @@ font-size: 7.2rem;
 }
 
 
-/* Empty days */
+/* ==========================================
+   EMPTY DAYS
+========================================== */
 
 .empty-day {
     opacity: 0.2;
 }
 
 
-/* Day Number */
+/* ==========================================
+   DAY NUMBER
+========================================== */
 
 .day-number {
-    font-family: var(--font-primary);
+    font-family:
+        var(--font-primary);
 
     font-size: 1.4rem;
 
-    color: var(--color-secondary);
+    color:
+        var(--color-secondary);
 
     margin-bottom: 8px;
 }
 
 
-/* Today */
+/* ==========================================
+   TODAY
+========================================== */
 
 .calendar-day.today {
     border:
@@ -515,15 +613,20 @@ font-size: 7.2rem;
         0 0 12px var(--color-accent);
 }
 
+
 .calendar-day.today .day-number {
     color:
         var(--color-accent);
 }
 
 
-/* Event */
+/* ==========================================
+   EVENTS
+========================================== */
 
 .calendar-event {
+    width: 100%;
+
     margin-top: 8px;
 
     overflow: hidden;
@@ -536,16 +639,19 @@ font-size: 7.2rem;
 }
 
 
-/* Flyer */
+/* ==========================================
+   EVENT FLYER
+========================================== */
 
 .event-flyer {
     display: block;
 
     width: 100%;
-
     height: auto;
 
-    object-fit: cover;
+    max-width: 100%;
+
+    object-fit: contain;
 
     cursor: pointer;
 
@@ -553,12 +659,15 @@ font-size: 7.2rem;
         transform 0.2s;
 }
 
+
 .event-flyer:hover {
     transform: scale(1.03);
 }
 
 
-/* Event Information */
+/* ==========================================
+   EVENT INFORMATION
+========================================== */
 
 .event-info {
     display: flex;
@@ -578,13 +687,16 @@ font-size: 7.2rem;
         var(--color-primary);
 }
 
+
 .event-info strong {
     color:
         var(--color-secondary);
 }
 
 
-/* Error */
+/* ==========================================
+   ERROR
+========================================== */
 
 .calendar-error {
     color:
@@ -603,41 +715,563 @@ font-size: 7.2rem;
 @media (max-width: 800px) {
 
     .calendar-header {
-        grid-template-columns:
-            50px 1fr 50px;
+        width: 100%;
 
-        gap: 10px;
+        grid-template-columns:
+            50px
+            minmax(0, 1fr)
+            50px;
+
+        column-gap: 10px;
+
+        height: 70px;
     }
+
 
     .calendar-header h3 {
+        width: 100%;
+
         font-size: 2rem;
+
+        white-space: nowrap;
     }
+
 
     .calendar-button {
+        width: 50px;
+        min-width: 50px;
+        max-width: 50px;
+
+        height: 50px;
+
         font-size: 1.3rem;
-        padding: 8px;
     }
 
-    .calendar-weekdays div {
-        font-size: 0.7rem;
-        padding: 5px;
-    }
 
-    .calendar-grid {
+    .calendar-weekdays {
         gap: 2px;
     }
 
+
+    .calendar-weekdays div {
+        font-size: 0.7rem;
+
+        padding: 5px;
+    }
+
+
+    /*
+       Still exactly 6 rows on mobile,
+       just shorter.
+    */
+
+    .calendar-grid {
+        grid-template-rows:
+            repeat(6, 90px);
+
+        grid-auto-rows: 90px;
+
+        gap: 2px;
+    }
+
+
     .calendar-day {
+        height: 90px;
         min-height: 90px;
+        max-height: 90px;
+
         padding: 4px;
     }
 
+
     .day-number {
         font-size: 1rem;
+
+        margin-bottom: 4px;
     }
+
+
+    .calendar-event {
+        margin-top: 4px;
+    }
+
 
     .event-info {
         font-size: 0.65rem;
+
+        padding: 4px;
+    }
+
+}
+
+
+/* ==========================================
+   BOOKING / CONTACT SECTION
+========================================== */
+
+footer {
+    width: 100%;
+
+    margin-top: 100px;
+
+    padding:
+        var(--spacing-xl)
+        var(--spacing-md)
+        4rem;
+
+    background-color:
+        var(--color-background);
+
+    text-align: center;
+}
+
+
+.contact-container {
+    width: 100%;
+    max-width: 800px;
+
+    margin: 0 auto;
+}
+
+
+.contact-container h2 {
+    margin-top: 0;
+
+    margin-bottom:
+        var(--spacing-md);
+
+    color:
+        var(--color-secondary);
+}
+
+
+.contact-intro {
+    margin-bottom:
+        var(--spacing-lg);
+
+    font-family:
+        var(--font-secondary);
+
+    font-size: 1.5rem;
+
+    color:
+        var(--color-highlight);
+}
+
+
+/* ==========================================
+   CONTACT FORM
+========================================== */
+
+.contact-form {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--spacing-xs);
+
+    text-align: left;
+}
+
+
+.contact-form label {
+    margin-top:
+        var(--spacing-sm);
+
+    margin-bottom:
+        0.25rem;
+
+    font-family:
+        var(--font-primary);
+
+    font-size: 1.1rem;
+
+    color:
+        var(--color-secondary);
+}
+
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    padding:
+        var(--spacing-sm);
+
+    border:
+        2px solid var(--color-highlight);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        rgba(0, 0, 0, 0.5);
+
+    color:
+        var(--color-primary);
+
+    font-family:
+        var(--font-secondary);
+
+    font-size: 1.1rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color:
+        rgba(255, 255, 255, 0.5);
+}
+
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color:
+        var(--color-primary);
+
+    box-shadow:
+        0 0 8px var(--color-primary),
+        0 0 16px var(--color-highlight);
+}
+
+
+/* ==========================================
+   MESSAGE BOX
+========================================== */
+
+.contact-form textarea {
+    min-height: 180px;
+
+    resize: vertical;
+}
+
+
+/* ==========================================
+   SUBMIT BUTTON
+========================================== */
+
+.contact-button {
+    margin-top:
+        var(--spacing-md);
+
+    padding:
+        var(--spacing-sm)
+        var(--spacing-lg);
+
+    background:
+        var(--color-primary);
+
+    color:
+        var(--color-neutral);
+
+    border:
+        2px solid var(--color-primary);
+
+    border-radius:
+        var(--radius-sm);
+
+    font-family:
+        var(--font-primary);
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        background-color 0.2s;
+}
+
+
+.contact-button:hover {
+    transform:
+        scale(1.03);
+
+    background:
+        var(--color-secondary);
+
+    border-color:
+        var(--color-secondary);
+
+    box-shadow:
+        0 0 10px var(--color-primary),
+        0 0 20px var(--color-highlight);
+}
+
+
+.contact-button:active {
+    transform:
+        scale(0.97);
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 800px) {
+
+    footer {
+        margin-top: 60px;
+
+        padding:
+            var(--spacing-lg)
+            var(--spacing-sm)
+            3rem;
+    }
+
+
+    .contact-container h2 {
+        font-size: 2.5rem;
+    }
+
+
+    .contact-intro {
+        font-size: 1.2rem;
+    }
+
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1rem;
+    }
+
+
+    .contact-button {
+        width: 100%;
+
+        font-size: 1rem;
+    }
+
+}
+
+/* ==================================================
+   FULLSCREEN CALENDAR IMAGE VIEWER
+   ================================================== */
+
+.image-viewer {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background:
+        rgba(0, 0, 0, 0.95);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 30px 30px;
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+/* ==================================================
+   OPEN VIEWER
+   ================================================== */
+
+.image-viewer.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* ==================================================
+   FULLSCREEN IMAGE
+   ================================================== */
+
+.fullscreen-image {
+
+    display: block;
+
+    max-width: 95vw;
+    max-height: 90vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border:
+        2px solid var(--color-primary);
+
+    box-shadow:
+        0 0 15px var(--color-primary),
+        0 0 35px var(--color-highlight);
+
+    border-radius:
+        var(--radius-sm);
+}
+
+
+/* ==================================================
+   CLOSE BUTTON
+   ================================================== */
+
+.image-viewer-close {
+
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    background:
+        var(--color-primary);
+
+    color:
+        var(--color-neutral);
+
+    border: none;
+
+    border-radius:
+        50%;
+
+    font-family:
+        var(--font-primary);
+
+    font-size:
+        2.5rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 10000;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* ==================================================
+   CLOSE BUTTON HOVER
+   ================================================== */
+
+.image-viewer-close:hover {
+
+    transform:
+        scale(1.1);
+
+    background:
+        var(--color-secondary);
+
+    box-shadow:
+        0 0 10px var(--color-primary),
+        0 0 20px var(--color-highlight);
+}
+
+
+/* ==================================================
+   CLOSE BUTTON ACTIVE
+   ================================================== */
+
+.image-viewer-close:active {
+
+    transform:
+        scale(0.95);
+}
+
+
+/* ==================================================
+   PREVENT PAGE SCROLLING WHILE IMAGE IS OPEN
+   ================================================== */
+
+body.image-viewer-open {
+
+    overflow: hidden;
+}
+
+
+/* ==================================================
+   MAKE CALENDAR FLYERS CLEARLY CLICKABLE
+   ================================================== */
+
+.event-flyer {
+
+    cursor: zoom-in;
+}
+
+
+/* ==================================================
+   MOBILE FULLSCREEN VIEWER
+   ================================================== */
+
+@media (max-width: 800px) {
+
+    .image-viewer {
+
+        padding:
+            70px 10px 20px;
+    }
+
+
+    .fullscreen-image {
+
+        max-width:
+            96vw;
+
+        max-height:
+            85vh;
+
+        border-width:
+            1px;
+    }
+
+
+    .image-viewer-close {
+
+        top: 12px;
+        right: 12px;
+
+        width: 45px;
+        height: 45px;
+
+        font-size:
+            2rem;
     }
 
 }

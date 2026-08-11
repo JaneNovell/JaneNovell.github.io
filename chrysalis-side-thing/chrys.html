@@ -11,10 +11,9 @@
 <body>
 
 <nav aria-label="Navigation Bar">
-<a class="small-text" href="#top">Top</a>
-<a class="small-text" href="#about">Event Calendar</a>
-<a class="small-text" href="#artwork">Artwork Gallery</a>
-<a class="small-text" href="#artwork">Bookings Contact</a>
+<a class="small-text" href="#about">Event-Calendar</a>
+<a class="small-text" href="#artwork">Gallery</a>
+<a class="small-text" href="#contact">Bookings</a>
 </nav>
 
 <header id="top" class="big">
@@ -97,10 +96,70 @@ src="starstextemb.png" alt="" aria-hidden="true">
 
 </main>
 
-<footer>
-<p class="small-text"> BOOKING EMAILS TEXTBOX</p>
+<footer id="contact">
+
+    <div class="contact-container">
+
+        <h2>Bookings Contact</h2>
+
+        <form
+            class="contact-form"
+            action="mailto:chrysalisdenver@gmail.com"
+            method="post"
+            enctype="text/plain"
+        >
+
+            <label for="name">
+                Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="Name"
+                placeholder="Your name"
+                required
+            >
 
 
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="Email"
+                placeholder="your@email.com"
+                required
+            >
+
+
+            <label for="message">
+                Booking Information
+            </label>
+
+            <textarea
+                id="message"
+                name="Message"
+                rows="8"
+                placeholder=""
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="contact-button"
+            >
+                Send
+            </button>
+
+        </form>
+
+    </div>
+
+</footer>
 
 <script src="calendar.js"></script>
 
